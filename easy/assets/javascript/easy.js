@@ -15,8 +15,32 @@
    * https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
    */
 
+  $(function(){
   var saveButton = $('#save-button');
   var loadButton = $('#load-button');
+
+  var saveString;
+  var loadString;
+
+
+
+
+
+
+  saveButton.click(function(){
+    //console.log("- button clicked");
+      saveString = getText();
+      console.log (saveString);
+      localStorage.setItem('textValue', saveString);
+
+  })
+
+  loadButton.click(function(){
+
+    loadString = localStorage.getItem("textValue");
+    console.log(loadString);
+
+  })
 
   /**
    * Gets the text from the element for you
@@ -33,4 +57,6 @@
   function setText(text) {
     return $('#save-me').val(text);
   }
+
+  })
 })();

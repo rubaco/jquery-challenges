@@ -38,9 +38,107 @@
 
 (function(){
 
+
+
   //jQuery equivelent to window.onload = function{}
   //code in here wont run until page loads
   $(function(){
+
+    let teamoneShoot_Button = $("#teamone-shoot")
+    let teamoneNumShots_Label = $("#teamone-numshots")
+    let teamOneNumShots_Counter = 0;
+    let teamOneRandom = 0;
+    let goalCounter = 0;
+    let teamOneGoalScore = $("#teamone-numhits")
+
+    let teamTwoShoot_Button = $("#teamtwo-shoot")
+    let teamTwoNumShots_Label = $("#teamtwo-numshots")
+    let teamTwoNumShots_Counter = 0;
+    let teamTwoRandom = 0;
+    let goalCounter2 = 0;
+    let teamTwoGoalScore = $("#teamtwo-numhits")
+
+    let reset_Button = $("#reset")
+    let reset_Label = $("#num-resets")
+    let reset_Counter = 0;
+
+
+
+
+    var teamOne = $('#teamone-shoot');
+
+
+  teamoneShoot_Button .click(function(){
+      teamOneNumShots_Counter  = teamOneNumShots_Counter + 1;
+      console.log(teamOneNumShots_Counter );
+
+
+      teamoneNumShots_Label.text(teamOneNumShots_Counter);
+
+      let teamOneRandomFloor = Math.floor(Math.random() * 2) + 1;
+      if (teamOneRandomFloor == 1){
+         $("body").css("background-color","blue");
+        console.log("score!!")
+        goalCounter = goalCounter + 1;
+        console.log("total goal: " + goalCounter);
+        teamOneGoalScore.text(goalCounter);
+      }
+
+      else if (teamOneRandomFloor == 2){
+        console.log("No score!!")
+        $("body").css("background-color","white");
+      }
+
+    })
+
+    teamTwoShoot_Button .click(function(){
+        teamTwoNumShots_Counter  = teamTwoNumShots_Counter + 1;
+        console.log(teamTwoNumShots_Counter);
+
+        teamTwoNumShots_Label.text(teamTwoNumShots_Counter);
+
+        let teamTwoRandomFloor = Math.floor(Math.random() * 2) + 1;
+        if (teamTwoRandomFloor == 1){
+           $("body").css("background-color","green");
+          console.log("team 2 score!!");
+          goalCounter2 = goalCounter2 + 1;
+          console.log("total goal: " + goalCounter2);
+          teamTwoGoalScore.text(goalCounter2);
+        }
+
+        else if (teamTwoRandomFloor == 2){
+          console.log("Team 2 No score!!")
+          $("body").css("background-color","white");
+        }
+
+      })
+
+      reset_Button .click(function(){
+          reset_Counter  = reset_Counter + 1;
+          reset_Label.text(reset_Counter)
+          console.log(reset_Counter);
+          goalCounter = 0;
+          goalCounter2 = 0;
+          teamOneNumShots_Counter = 0;
+          teamTwoNumShots_Counter = 0;
+          teamOneGoalScore.text(teamOneNumShots_Counter);
+          teamTwoGoalScore.text(teamTwoNumShots_Counter);
+
+
+          teamoneNumShots_Label.text(teamOneNumShots_Counter );
+          teamTwoNumShots_Label.text(teamTwoNumShots_Counter);
+
+        })
+
+    /**
+     * Gets the text from the element for you
+     * @return {String}
+     */
+    function getText() {
+      return $('#save-me').val();
+    }
+
+
 
 
 
