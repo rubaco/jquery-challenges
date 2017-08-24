@@ -33,6 +33,7 @@
       console.log (saveString);
       localStorage.setItem('textValue', saveString);
 
+
   })
 
   loadButton.click(function(){

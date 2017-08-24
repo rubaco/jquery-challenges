@@ -31,11 +31,80 @@
 
  (function(){
 
+
+
+   //check for odd and changes links
+        function isOdd(num) { return num % 2;}{
+        }
+
    //jQuery equivelent to window.onload = function{}
    //code in here wont run until page loads
    $(function(){
+     //remove last 2 posts w/ class post
+     $( "div" ).removeClass( "row post" );
+
+     //remove odds
+     let title = $(".title a");
+
+     //remove images on the side
+    // $( "img" ).removeClass( "large-3 columns hide-for-small" );
+     $('p img').remove();
+
+    $("aside").hide();
+
+     console.log(title);
+
+     titleText = "";
+     newText = "";
+
+    for (var i=0;i<title.length;i++) {
+     titleText = title[i].innerHTML;
+     console.log(titleText);
+     newText = titleText.replace(/Section /i, '');
+     console.log(newText);
+       if(isOdd(newText))
+       {
+         console.log("its odd!")
+         title[i].style.visibility = 'hidden'
+         // .css({ visibility: 'hidden' })
+         // .style.visibility = 'hidden';
+       }
+       else {
+         console.log("its even!")
+       }
+     }
+
+//change bacon to LASER VISION
+    var strNewString = $('body').html().replace(/Bacon/g,'LASER VISION');
+    $('body').html(strNewString);
 
 
+//change font on click
+     let panel = $(".panel")
+     clicked = true;
+
+     panel .click(function(){
+       let black = "rgb(51, 51, 51)";
+       let red = "rgb(255, 0, 0)";
+       var theColorIs = $('h1').css("color");
+      console.log("the color starts as:" + theColorIs)
+
+      let title = $(".title a");
+
+      console.log(title);
+
+         if (clicked){
+         $("h1").css({ 'color': 'red'});
+         clicked  = false;
+        }
+
+        else {
+        $("h1").css({ 'color': 'black'});
+        clicked  = true;
+
+        }
+
+       })
 
    })
 
